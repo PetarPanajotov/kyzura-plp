@@ -1,0 +1,63 @@
+@use 'variables' as *;
+@use 'mixins' as *;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap');
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: $font-color;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: $font-weight-bold;
+  line-height: 1.2;
+  margin-bottom: 0.5em;
+  color: $font-color;
+}
+
+h1 {
+  font-size: calc(#{$font-size-h1} * 0.8);
+  letter-spacing: -0.02em;
+  
+  @include desktop-up {
+    font-size: $font-size-h1;
+  }
+}
+
+h2 {
+  font-size: calc(#{$font-size-h2} * 0.85);
+  
+  @include desktop-up {
+    font-size: $font-size-h2;
+  }
+}
+
+h3 {
+  font-size: calc(#{$font-size-h3} * 0.9);
+  
+  @include desktop-up {
+    font-size: $font-size-h3;
+  }
+}
+
+h4 {
+  font-size: $font-size-h4;
+  font-weight: $font-weight-medium;
+}
+
+h5 {
+  font-size: $font-size-h5;
+}
+
+h6 {
+  font-size: $font-size-h6;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
