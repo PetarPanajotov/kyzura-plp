@@ -1,0 +1,35 @@
+.logo {
+  font-size: 24px;
+  font-weight: 600;
+  color: #111;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  z-index: 1001;
+
+  .logo-text {
+    font-family: 'Cormorant Garamond', 'Georgia', serif;
+    font-weight: 600;
+    transition: transform 0.3s ease;
+  }
+
+  .logo-accent {
+    color: #d4af37;
+    font-size: 32px;
+    line-height: 0.7;
+    transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  &:hover {
+    .logo-text {
+      transform: translateY(-1px);
+    }
+    .logo-accent {
+      transform: scale(1.2) rotate(180deg);
+    }
+  }
+}
