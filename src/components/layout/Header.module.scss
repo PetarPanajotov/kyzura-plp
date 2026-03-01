@@ -1,0 +1,216 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+@use '@/styles/keyframes' as *;
+
+.header {
+  @include sticky; 
+  height: $header-height;
+  background-color: rgba($color-white, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  z-index: 1000;
+  transition: $transition-base;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      rgba(0, 0, 0, 0.1) 50%, 
+      transparent 100%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover::after {
+    opacity: 1;
+  }
+}
+
+.header-container {
+  max-width: $container-max-width;
+  margin: 0 auto;
+  padding: 0 32px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+
+  @media (max-width: $breakpoint-md) {
+    padding: 0 20px;
+    gap: 20px;
+  }
+}
+
+/* ==========================================
+   HEADER ACTIONS
+   ========================================== */
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.icon-button {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: $color-text-dark;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: $transition-base;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.04);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+/* Cart Badge */
+.cart-button {
+  .cart-badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: $color-gold;
+    color: $color-white;
+    font-size: 11px;
+    font-weight: $font-weight-bold;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid $color-white;
+    animation: badge-pulse 2s ease-in-out infinite;
+  }
+}
+
+/* ==========================================
+   SEARCH
+   ========================================== */
+
+.search-container {
+  position: relative;
+
+  .search-toggle {
+    transition: all 0.3s ease;
+  }
+
+  &.is-open .search-toggle {
+    background: rgba(0, 0, 0, 0.04);
+  }
+}
+
+.search-dropdown {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  width: 320px;
+  background: $color-white;
+  border-radius: 12px;
+  box-shadow: $shadow-dropdown;
+  padding: 12px;
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
+  transition: $transition-base;
+
+  @media (max-width: $breakpoint-sm) {
+    width: calc(100vw - 40px);
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%) translateY(-8px);
+  }
+
+  .search-container.is-open & {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: all;
+
+    @media (max-width: $breakpoint-sm) {
+      transform: translateX(-50%) translateY(0);
+    }
+  }
+}
+
+.search-input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  font-size: 15px;
+  outline: none;
+  transition: all 0.3s ease;
+  font-family: inherit;
+
+  &:focus {
+    border-color: $color-gold;
+    box-shadow: 0 0 0 3px rgba($color-gold, 0.1);
+  }
+
+  &::placeholder {
+    color: $color-text-placeholder;
+  }
+}
+
+/* ==========================================
+   MOBILE MENU
+   ========================================== */
+
+.mobile-menu-toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  border: none;
+  background: transparent;
+  color: $color-text-dark;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  z-index: 1001;
+
+  @media (max-width: $breakpoint-md) {
+    display: flex;
+  }
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.04);
+  }
+}
+
+.mobile-overlay {
+  display: none;
+
+  @media (max-width: $breakpoint-md) {
+    display: block;
+    position: fixed;
+    top: $header-height;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    z-index: 999;
+    animation: fadeIn 0.3s ease;
+  }
+}

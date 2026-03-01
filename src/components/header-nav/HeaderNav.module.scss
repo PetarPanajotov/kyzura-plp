@@ -1,0 +1,110 @@
+@use '@/styles/variables' as *;
+@use '@/styles/keyframes' as *;
+
+/* ==========================================
+   NAVIGATION MENU
+   ========================================== */
+
+.main-nav {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+
+  @media (max-width: $breakpoint-md) {
+    position: fixed;
+    top: $header-height;
+    left: 0;
+    right: 0;
+    background: $color-white;
+    padding: 32px 24px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: $transition-smooth;
+    pointer-events: none;
+
+    &.is-open {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: all;
+    }
+  }
+}
+
+.nav-menu {
+  display: flex;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  @media (max-width: $breakpoint-md) {
+    flex-direction: column;
+    gap: 4px;
+    width: 100%;
+  }
+}
+
+.nav-item {
+  position: relative;
+  padding: 12px 24px;
+  text-decoration: none;
+  color: $color-muted;
+  font-size: 15px;
+  font-weight: $font-weight-medium;
+  letter-spacing: 0.03em;
+  transition: $transition-base;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 8px;
+
+  @media (max-width: $breakpoint-md) {
+    padding: 16px 20px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    font-size: 18px;
+  }
+
+  .nav-item-text {
+    position: relative;
+    z-index: 1;
+  }
+
+  .nav-item-line {
+    position: absolute;
+    bottom: 8px;
+    left: 24px;
+    right: 24px;
+    height: 2px;
+    background: linear-gradient(90deg, $color-gold, $color-gold-light);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 2px;
+
+    @media (max-width: $breakpoint-md) {
+      left: 20px;
+      bottom: 12px;
+    }
+  }
+
+  &:hover {
+    color: $color-text-dark;
+    background: rgba($color-gold, 0.04);
+
+    .nav-item-line {
+      transform: scaleX(1);
+    }
+  }
+
+  &.active {
+    color: $color-text-dark;
+    font-weight: $font-weight-bold;
+
+    .nav-item-line {
+      transform: scaleX(1);
+      background: linear-gradient(90deg, $color-gold, $color-gold-light);
+    }
+  }
+}
