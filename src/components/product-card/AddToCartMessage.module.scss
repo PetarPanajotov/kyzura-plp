@@ -1,0 +1,31 @@
+@use '@/styles/variables' as *;
+
+.cart-message-fixed {
+  position: fixed;
+  z-index: 9999;
+  pointer-events: none;
+  
+  bottom: 24px;
+  left: 16px;
+  right: 16px;
+  text-align: center;
+  
+  background-color: #22c55e;
+  color: $color-white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  
+  animation: slideUp 0.3s ease-out forwards;
+
+  @media (min-width: $breakpoint-md) {
+    left: auto;
+    right: 24px;
+    text-align: left;
+    min-width: 250px;
+    
+    animation: slideInRight 0.3s ease-out forwards;
+  }
+}

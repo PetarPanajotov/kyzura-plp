@@ -1,0 +1,7 @@
+@use '@/styles/variables' as *;
+
+.description {
+  color: $color-muted;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}

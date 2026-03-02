@@ -15,7 +15,7 @@ export const router = createBrowserRouter([
       },
       {
         path: ":category", 
-        element: <ProductPage />,
+        element: <ProductPage key={window.location.pathname} />,
       },
     ],
   },

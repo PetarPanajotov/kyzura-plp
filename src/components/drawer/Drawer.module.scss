@@ -1,0 +1,55 @@
+@use '@/styles/variables' as *;
+
+.root {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.drawer {
+  position: absolute;
+  top: 0;
+  height: 100vh;
+  background: $color-white;
+  overflow: auto;
+}
+
+.left {
+  left: 0;
+}
+
+.right {
+  right: 0;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  border-bottom: 1px solid #eee;
+}
+
+.title {
+  font-weight: 600;
+  color: $color-black;
+}
+
+.close-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  padding: 8px;
+}
+
+.content {
+  padding: 16px;
+}

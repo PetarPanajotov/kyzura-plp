@@ -36,14 +36,18 @@ $font-size-h6: 1rem;
 $header-bg: $color-white;
 $header-color: $font-color;
 $header-height: 80px;
-$container-max-width: 1440px;
+$container-width: min(100%, 1200px);
 $sidebar-width: 280px;
 
 /* ==========================================
    BREAKPOINTS
    ========================================== */
-$breakpoint-md: 768px;
-$breakpoint-sm: 480px;
+$breakpoint-xs: 320px;   // Small mobile (iPhone SE)
+$breakpoint-sm: 480px;   // Mobile (Large)
+$breakpoint-md: 768px;   // Tablets (Portrait)
+$breakpoint-lg: 1024px;  // Tablets (Landscape) / Laptops
+$breakpoint-xl: 1200px;  // Desktop
+$breakpoint-xxl: 1440px; // Large Desktop / QHD
 
 /* ==========================================
    EFFECTS & TRANSITIONS

@@ -1,0 +1,20 @@
+@use '@/styles/variables' as *;
+
+.price-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-bottom: 6px;
+}
+
+.price {
+  font-size: 18px;
+  font-weight: 600;
+  color: $color-black;
+}
+
+.original-price {
+  font-size: 14px;
+  color: $color-muted;
+  text-decoration: line-through;
+}

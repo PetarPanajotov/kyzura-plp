@@ -1,7 +1,9 @@
+@use '@/styles/variables' as *;
+
 .logo {
   font-size: 24px;
   font-weight: 600;
-  color: #111;
+  color: $color-black;
   text-decoration: none;
   letter-spacing: 0.02em;
   display: flex;

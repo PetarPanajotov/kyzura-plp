@@ -1,0 +1,43 @@
+@use '@/styles/variables' as *;
+$star-color: $color-gold-light; 
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.stars {
+  display: flex;
+  align-items: center;
+}
+
+.starWrapper {
+  position: relative;
+  display: inline-flex;
+}
+
+/* New classes for the icons */
+.starFilled {
+  fill: $star-color;
+  stroke: $star-color;
+}
+
+.starEmpty {
+  fill: none;
+  stroke: $star-color;
+}
+
+.starHalfOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  fill: $star-color;
+  stroke: $star-color;
+}
+
+.reviewCount {
+  color: $color-muted;
+  font-size: 12px;
+}

@@ -1,0 +1,13 @@
+@use '@/styles/variables' as *;
+
+.badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: $color-black;
+  color: $color-white;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: $font-weight-bold;
+}

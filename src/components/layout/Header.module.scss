@@ -33,7 +33,7 @@
 }
 
 .header-container {
-  max-width: $container-max-width;
+  max-width: $container-width;
   margin: 0 auto;
   padding: 0 32px;
   height: 100%;
@@ -47,10 +47,6 @@
     gap: 20px;
   }
 }
-
-/* ==========================================
-   HEADER ACTIONS
-   ========================================== */
 
 .header-actions {
   display: flex;
@@ -82,7 +78,6 @@
   }
 }
 
-/* Cart Badge */
 .cart-button {
   .cart-badge {
     position: absolute;
@@ -102,78 +97,6 @@
     animation: badge-pulse 2s ease-in-out infinite;
   }
 }
-
-/* ==========================================
-   SEARCH
-   ========================================== */
-
-.search-container {
-  position: relative;
-
-  .search-toggle {
-    transition: all 0.3s ease;
-  }
-
-  &.is-open .search-toggle {
-    background: rgba(0, 0, 0, 0.04);
-  }
-}
-
-.search-dropdown {
-  position: absolute;
-  top: calc(100% + 12px);
-  right: 0;
-  width: 320px;
-  background: $color-white;
-  border-radius: 12px;
-  box-shadow: $shadow-dropdown;
-  padding: 12px;
-  opacity: 0;
-  transform: translateY(-8px);
-  pointer-events: none;
-  transition: $transition-base;
-
-  @media (max-width: $breakpoint-sm) {
-    width: calc(100vw - 40px);
-    left: 50%;
-    right: auto;
-    transform: translateX(-50%) translateY(-8px);
-  }
-
-  .search-container.is-open & {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: all;
-
-    @media (max-width: $breakpoint-sm) {
-      transform: translateX(-50%) translateY(0);
-    }
-  }
-}
-
-.search-input {
-  width: 100%;
-  padding: 14px 16px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  font-size: 15px;
-  outline: none;
-  transition: all 0.3s ease;
-  font-family: inherit;
-
-  &:focus {
-    border-color: $color-gold;
-    box-shadow: 0 0 0 3px rgba($color-gold, 0.1);
-  }
-
-  &::placeholder {
-    color: $color-text-placeholder;
-  }
-}
-
-/* ==========================================
-   MOBILE MENU
-   ========================================== */
 
 .mobile-menu-toggle {
   display: none;
