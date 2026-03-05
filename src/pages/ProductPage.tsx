@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { useParams } from "react-router-dom";
 import CategoryHeader from "@/components/category-header/CategoryHeader";
 import ProductCard from "@/components/product-card/ProductCard";
@@ -8,6 +8,9 @@ import { useProducts } from "@/hooks/useProducts";
 import { useProductCatalog } from "@/hooks/useProductCatalog";
 
 import styles from "./ProductPage.module.scss";
+import { NoProducts } from "@/components/no-products/NoProducts";
+import { NAV_LINKS } from "@/utils/constants";
+import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 
 export function ProductPage() {
   const { category } = useParams<{ category: string }>();
@@ -39,15 +42,19 @@ export function ProductPage() {
     });
   }, [category]);
 
+  const currentCategory = useMemo(() => {
+    return NAV_LINKS.find((link) => link.slug === category);
+  }, [category]);
+
+  const pageTitle = currentCategory ? `Kyzura: ${currentCategory.label}` : 'Kyzura';
+  
+  useDocumentTitle(pageTitle);
+
   const visibleProducts = finalDisplayProducts.slice(0, visibleCount);
   const showingCount = visibleProducts.length;
   const totalCount = finalDisplayProducts.length;
   const hasProducts = totalCount > 0;
   const canLoadMore = visibleCount < totalCount;
-
-  if (isLoading) {
-    return <div className={styles["loading-state"]}>Loading products...</div>;
-  }
 
   return (
     <div className={styles["page-wrapper"]}>
@@ -81,19 +88,14 @@ export function ProductPage() {
         </header>
 
         <section className={styles["product-grid"]}>
-          {hasProducts ? (
+          {hasProducts && (
             visibleProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))
-          ) : (
-            <div className={styles["no-results"]}>
-              <p>No products match your current filters.</p>
-              <button onClick={clearFilters} className={styles["clear-btn"]}>
-                Clear all filters
-              </button>
-            </div>
           )}
         </section>
+
+        {!hasProducts && <NoProducts onClearFilters={clearFilters} />}
 
         {hasProducts && (
           <>

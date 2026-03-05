@@ -69,7 +69,7 @@
 .filter-trigger {
   display: none;
 
-  @media (max-width: $breakpoint-md) {
+  @media (max-width: $breakpoint-lg) {
     display: inline-flex;
     padding: 10px 14px;
     border: 1px solid #ddd;

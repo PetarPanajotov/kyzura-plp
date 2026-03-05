@@ -5,14 +5,18 @@ import { ProductPrice } from './ProductPrice';
 import styles from './ProductCard.module.scss';
 import type { Product } from '@/types/Product';
 import { AddToCartMessage } from './AddToCartMessage';
+import { useCart } from '@/contexts/CartContext';
 
 /** We use here memo, as we don't want to rerender on every sort/filter. With this approach I improved the INP with ~80% */
 const ProductCard = memo(function ProductCard({ product }: { product: Product }) {
   const { name, description, price, originalPrice, rating, reviewCount, image } = product;
   const [showMessage, setShowMessage] = useState(false);
+  const { addToCart } = useCart();
 
   const handleAddToCart = () => {
     setShowMessage(true);
+    addToCart(product)
+    
   };
 
   return (

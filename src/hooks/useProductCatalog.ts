@@ -66,8 +66,8 @@ export function useProductCatalog(initialProducts: Product[]) {
   const resetCatalog = useCallback(() => {
     clearFilters();
     changeSort("featured");
-    // Pagination resets automatically via the useEffect above!
-  }, [clearFilters, changeSort]);
+    resetPagination();
+  }, [clearFilters, changeSort, resetPagination]);
 
   const finalDisplayProducts = useMemo(() => {
     const filtered = applyFilters(initialProducts, activeFilters);

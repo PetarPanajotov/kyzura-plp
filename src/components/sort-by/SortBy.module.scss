@@ -15,7 +15,7 @@
   font-size: 0.9rem;
   color: $color-muted;
 
-  @media (max-width: $breakpoint-md) {
+  @media (max-width: $breakpoint-lg) {
     display: none;
   }
 }
@@ -33,7 +33,7 @@
   border: 1px solid #ddd;
   border-radius: 6px;
   font-size: 14px;
-  color: #111;
+  color: $color-black;
   cursor: pointer;
   transition: all 0.2s;
   font-family: inherit;

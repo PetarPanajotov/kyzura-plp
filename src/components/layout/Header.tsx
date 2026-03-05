@@ -4,9 +4,12 @@ import { Link } from 'react-router-dom';
 import { HeaderNav } from '../header-nav/HeaderNav';
 import { KyzuraLogo } from '../kyzura-logo/KyzuraLogo';
 import styles from './Header.module.scss';
+import { useCart } from '@/contexts/CartContext';
 
 export default function Header() {
  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+ const { totalItems } = useCart();
 
   return (
     <header className={styles['header']}>
@@ -26,7 +29,9 @@ export default function Header() {
         <div className={styles['header-actions']}>
           <button className={styles['icon-button'] + ' ' + styles['cart-button']} aria-label="Shopping cart">
             <ShoppingCart size={20} />
-            <span className={styles['cart-badge']}>2</span>
+           {totalItems > 0 && (
+              <span className={styles['cart-badge']}>{totalItems}</span>
+            )}
           </button>
         </div>
       </div>
