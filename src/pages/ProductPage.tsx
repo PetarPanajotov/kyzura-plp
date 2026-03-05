@@ -16,7 +16,7 @@ export function ProductPage() {
   const { category } = useParams<{ category: string }>();
   const filterRef = useRef<FilterHandle>(null);
 
-  const { products, isLoading } = useProducts(category);
+  const { products } = useProducts(category);
 
   const {
     activeFilters,
