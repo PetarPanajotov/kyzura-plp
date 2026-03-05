@@ -1,15 +1,15 @@
 import { memo, useState } from 'react';
 import { StarRating } from './StarRating';
-import { DiscountBadge } from './DiscountBadge';
 import { ProductPrice } from './ProductPrice';
 import styles from './ProductCard.module.scss';
 import type { Product } from '@/types/Product';
 import { AddToCartMessage } from './AddToCartMessage';
 import { useCart } from '@/contexts/CartContext';
+import { BadgeContainer } from '../badge/BadgeContainer';
 
 /** We use here memo, as we don't want to rerender on every sort/filter. With this approach I improved the INP with ~80% */
 const ProductCard = memo(function ProductCard({ product }: { product: Product }) {
-  const { name, description, price, originalPrice, rating, reviewCount, image } = product;
+  const { name, description, price, originalPrice, rating, reviewCount, image, onSale, limited, newArrival } = product;
   const [showMessage, setShowMessage] = useState(false);
   const { addToCart } = useCart();
 
@@ -23,7 +23,13 @@ const ProductCard = memo(function ProductCard({ product }: { product: Product })
     <div className={styles['card']}>
       <div className={styles['image-container']}>
         <img src={image} alt={name} loading="lazy" className={styles['image']} />
-        <DiscountBadge price={price} originalPrice={originalPrice} />
+         <BadgeContainer 
+          price={price} 
+          originalPrice={originalPrice}
+          onSale={onSale}
+          limited={limited}
+          newArrival={newArrival}
+        />
       </div>
 
       <div className={styles['info']}>
