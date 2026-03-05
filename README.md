@@ -1,4 +1,25 @@
-# Kyzura PLP - Project Summary
+# Kyzura PLP
+
+
+**Live Demo:** [https://kyzura-plp.vercel.app/](https://kyzura-plp.vercel.app/)
+
+If you want to run this project on your own machine, follow these steps:
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/PetarPanajotov/kyzura-plp.git
+cd kyzura-plp
+
+# 2. Install dependencies (using pnpm)
+pnpm install
+
+# 3. Run the development server
+pnpm dev
+
+# 4. Build for production
+pnpm build
+```
+
 
 ## What has been implemented
 
@@ -25,6 +46,7 @@ The Kyzura PLP is a fully functional and responsive e-commerce page. Here is a l
 * **Routing:** React Router DOM
 * **Icons:** Lucide
 * **Animation:** Motion for React
+* **Deployment:** Vercel
 
 > **Note:** I chose to focus strictly on the front-end and UI/UX for this task. Since the project doesn’t need SEO, I used standard React because it is lightweight. If SEO or Server-Side Rendering were required, I would have used Next.js instead.
 
