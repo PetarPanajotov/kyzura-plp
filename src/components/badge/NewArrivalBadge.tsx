@@ -1,4 +1,3 @@
-// NewArrivalBadge.tsx
 import styles from './NewArrivalBadge.module.scss';
 
 export function NewArrivalBadge() {
