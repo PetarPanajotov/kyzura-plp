@@ -3,6 +3,8 @@
 
 **Live Demo:** [https://kyzura-plp.vercel.app/](https://kyzura-plp.vercel.app/)
 
+**Download/View assignment:** [assignment.pdf](./assignment.pdf)
+
 If you want to run this project on your own machine, follow these steps:
 
 ```bash
