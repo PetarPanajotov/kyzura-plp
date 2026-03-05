@@ -94,7 +94,7 @@ export default function Footer() {
                         <a href="javascript:void(0)" className={styles['legal-link']}>Cookie Policy</a>
                     </div>
                     <div className={styles['footer-copyright']}>
-                        © 2024 KYZURA. All rights reserved.
+                        © 2026 KYZURA. All rights reserved.
                     </div>
                 </div>
             </div>

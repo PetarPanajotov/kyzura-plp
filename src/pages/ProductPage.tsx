@@ -41,6 +41,7 @@ export function ProductPage() {
       left: 0,
       behavior: "instant",
     });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [category]);
 
   const activeFilterCount = useMemo(() => {
