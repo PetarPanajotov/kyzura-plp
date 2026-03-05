@@ -11,6 +11,7 @@ import styles from "./ProductPage.module.scss";
 import { NoProducts } from "@/components/no-products/NoProducts";
 import { NAV_LINKS } from "@/utils/constants";
 import { useDocumentTitle } from "@/hooks/useDocumentTitle";
+import { X } from "lucide-react";
 
 export function ProductPage() {
   const { category } = useParams<{ category: string }>();
@@ -34,20 +35,31 @@ export function ProductPage() {
     filterRef.current?.close();
 
     resetCatalog();
-    
+
     window.scrollTo({
       top: 0,
       left: 0,
-      behavior: "instant", 
+      behavior: "instant",
     });
   }, [category]);
+
+  const activeFilterCount = useMemo(() => {
+    let count = 0;
+    if (activeFilters.priceRange) count++;
+    if (activeFilters.rating) count++;
+
+    const activeFlags = Object.values(activeFilters.flags).filter(Boolean).length;
+    count += activeFlags;
+
+    return count;
+  }, [activeFilters]);
 
   const currentCategory = useMemo(() => {
     return NAV_LINKS.find((link) => link.slug === category);
   }, [category]);
 
   const pageTitle = currentCategory ? `Kyzura: ${currentCategory.label}` : 'Kyzura';
-  
+
   useDocumentTitle(pageTitle);
 
   const visibleProducts = finalDisplayProducts.slice(0, visibleCount);
@@ -72,13 +84,28 @@ export function ProductPage() {
           <CategoryHeader slug={category!} />
 
           <div className={styles["header-actions"]}>
-            <button
-              className={styles["filter-trigger"]}
-              type="button"
-              onClick={() => filterRef.current?.open()}
-            >
-              Filters
-            </button>
+            <div className={styles["filter-controls"]}>
+              <button
+                className={styles["filter-trigger"]}
+                type="button"
+                onClick={() => filterRef.current?.open()}
+              >
+                Filters
+                {activeFilterCount > 0 && (
+                  <span className={styles["filter-badge"]}>{activeFilterCount}</span>
+                )}
+              </button>
+
+              {activeFilterCount > 0 && (
+                <button
+                  className={styles["filter-clear-quick"]}
+                  onClick={clearFilters}
+                  aria-label="Clear all filters"
+                >
+                  <X size={14} />
+                </button>
+              )}
+            </div>
 
             <SortBy
               currentSort={sortBy}

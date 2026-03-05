@@ -47,6 +47,7 @@
   font-size: 14px;
 }
 
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -56,6 +57,7 @@
 
   @media (max-width: $breakpoint-md) {
     flex-direction: column;
+    align-items: stretch;
     gap: 16px;
   }
 }
@@ -64,35 +66,100 @@
   display: flex;
   gap: 12px;
   align-items: center;
+  flex-wrap: wrap;
 }
 
-.filter-trigger {
+
+.filter-controls {
   display: none;
 
   @media (max-width: $breakpoint-lg) {
     display: inline-flex;
-    padding: 10px 14px;
+    align-items: stretch; 
     border: 1px solid #ddd;
-    background: $color-white;
     border-radius: 8px;
-    font-weight: 600;
-    cursor: pointer;
+    background: $color-white;
+    overflow: hidden;
+    transition: border-color 0.2s;
+    height: 42px;
+
+    &:hover {
+      border-color: $color-black;
+    }
+  }
+}
+
+.filter-trigger {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 14px;
+  border: none; 
+  background: transparent;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  height: 100%;
+  color: $color-black;
+
+  .filter-badge {
+    background: $color-black;
+    color: $color-white;
+    font-size: 10px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+}
+
+.filter-clear-quick {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  border-left: 1px solid #eee;
+  cursor: pointer;
+  color: $color-muted;
+  transition: all 0.2s;
+  flex-shrink: 0;
+
+  &:hover {
+    background: #f9f9f9;
+    color: $color-black;
+  }
+
+  svg {
+    display: block;
   }
 }
 
 .load-more-container {
   display: flex;
   justify-content: center;
+  margin-top: 2rem;
 }
 
 .load-more-button {
-  padding: 0.5em 8em;
+  padding: 0.8em 8em;
   background: $color-black;
   color: $color-white;
   border: none;
   cursor: pointer;
   font-weight: $font-weight-bold;
   transition: opacity 0.2s;
+
+  @media (max-width: $breakpoint-sm) {
+    width: 100%;
+    padding: 0.8em 0;
+  }
 
   &:hover {
     opacity: 0.8;
